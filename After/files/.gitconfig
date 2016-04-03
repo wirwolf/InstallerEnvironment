@@ -1,0 +1,35 @@
+[user]
+
+[core]
+	symlinks = false
+	autocrlf = true
+	repositoryformatversion = 0
+	filemode = false
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+	interactive = true
+[pack]
+	packSizeLimit = 2g
+[help]
+	format = html
+[http]
+	sslCAinfo = /bin/curl-ca-bundle.crt
+[diff "astextplain"]
+	textconv = astextplain
+[rebase]
+	autosquash = true
+[http]
+    sslVerify = false
+[branch]
+	autosetuprebase = never
+[alias]
+  co = checkout
+  ci = commit
+  st = status
+  br = branch
+  hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+  type = cat-file -t
+  dump = cat-file -p
+  
