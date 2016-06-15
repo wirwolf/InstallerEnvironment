@@ -82,3 +82,5 @@ fi
 unset use_color safe_term match_lhs
 alias ls="ls -lh"
 alias ll="ls -la"
+alias composer_v="composer -vvv --profile --no-progress --prefer-dist"
+export PATH="$PATH:~/.composer/vendor/bin"
