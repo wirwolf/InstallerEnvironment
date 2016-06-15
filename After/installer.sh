@@ -151,7 +151,8 @@ composer global require "fxp/composer-asset-plugin=*"
 composer global require "phploc/phploc=*"
 composer global require "sebastian/phpcpd=*"
 git clone git://github.com/yiisoft/yii2-coding-standards.git
-mv yii2-coding-standards/Yii2/ /home/$HOME_USER/.composer/vendor/squizlabs/php_codesniffer/CodeSniffer/Standards/
+cp yii2-coding-standards/Yii2/ /home/$HOME_USER/.composer/vendor/squizlabs/php_codesniffer/CodeSniffer/Standards/
+cp yii2-coding-standards/Yii2/ /home/$HOME_USER/.config/composer/vendor/squizlabs/php_codesniffer/CodeSniffer/Standards/
 rm -rf yii2-coding-standards/
 
 
