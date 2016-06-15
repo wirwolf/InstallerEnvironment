@@ -150,6 +150,10 @@ composer global require "phpmd/phpmd=@stable"
 composer global require "fxp/composer-asset-plugin=*"
 composer global require "phploc/phploc=*"
 composer global require "sebastian/phpcpd=*"
+git clone git://github.com/yiisoft/yii2-coding-standards.git
+mv yii2-coding-standards/Yii2/ /home/$HOME_USER/.composer/vendor/squizlabs/php_codesniffer/CodeSniffer/Standards/
+rm -rf yii2-coding-standards/
+
 
 
 wget https://raw.githubusercontent.com/wirwolf/InstallerEnvironment/master/After/files/.bashrc -O /root/.bashrc
