@@ -5,31 +5,27 @@ export HOME_USER=user
 . /etc/lsb-release
  
 sudo cat > /etc/apt/sources.list <<EOF
-deb http://mirror.mirohost.net/ubuntu/ $DISTRIB_CODENAME main restricted
-deb-src http://mirror.mirohost.net/ubuntu/ $DISTRIB_CODENAME main restricted
+deb http://ubuntu.volia.net/ubuntu-archive/ $DISTRIB_CODENAME main restricted
+deb-src http://ubuntu.volia.net/ubuntu-archive/ $DISTRIB_CODENAME universe restricted main multiverse #Added by software-properties
  
 ## Major bug fix updates produced after the final release of the
 ## distribution.
-deb http://mirror.mirohost.net/ubuntu/ $DISTRIB_CODENAME-updates main restricted
-deb-src http://mirror.mirohost.net/ubuntu/ $DISTRIB_CODENAME-updates main restricted
+deb http://ubuntu.volia.net/ubuntu-archive/ $DISTRIB_CODENAME-updates main restricted
+deb-src http://ubuntu.volia.net/ubuntu-archive/ $DISTRIB_CODENAME-updates universe restricted main multiverse #Added by software-properties
  
 ## N.B. software from this repository is ENTIRELY UNSUPPORTED by the Ubuntu
 ## team. Also, please note that software in universe WILL NOT receive any
 ## review or updates from the Ubuntu security team.
-deb http://mirror.mirohost.net/ubuntu/ $DISTRIB_CODENAME universe
-deb-src http://mirror.mirohost.net/ubuntu/ $DISTRIB_CODENAME universe
-deb http://mirror.mirohost.net/ubuntu/ $DISTRIB_CODENAME-updates universe
-deb-src http://mirror.mirohost.net/ubuntu/ $DISTRIB_CODENAME-updates universe
+deb http://ubuntu.volia.net/ubuntu-archive/ $DISTRIB_CODENAME universe
+deb http://ubuntu.volia.net/ubuntu-archive/ $DISTRIB_CODENAME-updates universe
  
 ## N.B. software from this repository is ENTIRELY UNSUPPORTED by the Ubuntu
 ## team, and may not be under a free licence. Please satisfy yourself as to
 ## your rights to use the software. Also, please note that software in
 ## multiverse WILL NOT receive any review or updates from the Ubuntu
 ## security team.
-deb http://mirror.mirohost.net/ubuntu/ $DISTRIB_CODENAME multiverse
-deb-src http://mirror.mirohost.net/ubuntu/ $DISTRIB_CODENAME multiverse
-deb http://mirror.mirohost.net/ubuntu/ $DISTRIB_CODENAME-updates multiverse
-deb-src http://mirror.mirohost.net/ubuntu/ $DISTRIB_CODENAME-updates multiverse
+deb http://ubuntu.volia.net/ubuntu-archive/ $DISTRIB_CODENAME multiverse
+deb http://ubuntu.volia.net/ubuntu-archive/ $DISTRIB_CODENAME-updates multiverse
  
 ## Uncomment the following two lines to add software from the 'backports'
 ## repository.
@@ -46,19 +42,16 @@ deb-src http://mirror.mirohost.net/ubuntu/ $DISTRIB_CODENAME-updates multiverse
 ## This software is not part of Ubuntu, but is offered by Canonical and the
 ## respective vendors as a service to Ubuntu users.
 deb http://archive.canonical.com/ubuntu $DISTRIB_CODENAME partner
-# deb-src http://archive.canonical.com/ubuntu $DISTRIB_CODENAME partner
+deb-src http://archive.canonical.com/ubuntu $DISTRIB_CODENAME partner
  
 ## This software is not part of Ubuntu, but is offered by third-party
 ## developers who want to ship their latest software.
-deb http://extras.ubuntu.com/ubuntu $DISTRIB_CODENAME main
-deb-src http://extras.ubuntu.com/ubuntu $DISTRIB_CODENAME main
- 
-deb http://mirror.mirohost.net/ubuntu/ $DISTRIB_CODENAME-security main restricted
-deb-src http://mirror.mirohost.net/ubuntu/ $DISTRIB_CODENAME-security main restricted
-deb http://mirror.mirohost.net/ubuntu/ $DISTRIB_CODENAME-security universe
-deb-src http://mirror.mirohost.net/ubuntu/ $DISTRIB_CODENAME-security universe
-deb http://mirror.mirohost.net/ubuntu/ $DISTRIB_CODENAME-security multiverse
-deb-src http://mirror.mirohost.net/ubuntu/ $DISTRIB_CODENAME-security multiverse
+
+deb http://ubuntu.volia.net/ubuntu-archive/ $DISTRIB_CODENAME-security main restricted
+deb-src http://ubuntu.volia.net/ubuntu-archive/ $DISTRIB_CODENAME-security universe restricted main multiverse #Added by software-properties
+deb http://ubuntu.volia.net/ubuntu-archive/ $DISTRIB_CODENAME-security universe
+deb http://ubuntu.volia.net/ubuntu-archive/ $DISTRIB_CODENAME-security multiverse
+
 EOF
 sudo apt-get update
  
@@ -70,16 +63,26 @@ sudo apt-get --yes --force-yes install mc htop
 sudo apt-get --yes --force-yes upgrade
  
 #------------------------------add chrome repo-------------------------------------
-wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
+wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - 
+sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
 #-----------------------------------------------------------------------------------
  
  
 #------------------------------add nodejs repo--------------------------------------
 sudo apt-get --yes --force-yes install curl
-sudo curl -sL https://deb.nodesource.com/setup | sudo bash -
+curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
 #-----------------------------------------------------------------------------------
- 
+
+
+#------------------------------add java 8-------------------------------------------
+ #sudo add-apt-repository ppa:webupd8team/java
+ sudo add-apt-repository ppa:openjdk-r/ppa
+
+#------------------------------add thunderbird-------------------------------------------
+sudo add-apt-repository ppa:mozillateam/thunderbird-next 
+
+#------------------------------add telegram-------------------------------------------
+sudo add-apt-repository ppa:atareao/telegram
  
 #---------------------------add charles repo---------------------------------------
 wget -q -O - http://www.charlesproxy.com/packages/apt/PublicKey | sudo apt-key add -
@@ -87,8 +90,6 @@ cat > /etc/apt/sources.list.d/charles.list <<EOF
 deb http://www.charlesproxy.com/packages/apt/ charles-proxy main
 EOF
 #-----------------------------------------------------------------------------------
- 
- 
  
 #------------------------------add SmartGit repo------------------------------------
 printf "\n" | sudo add-apt-repository ppa:eugenesan/ppa
@@ -99,10 +100,60 @@ printf "\n" | sudo add-apt-repository ppa:nilarimogard/webupd8
  
 sudo apt-get update
 #install all
-sudo apt-get --yes --force-yes install iftop iotop terminator google-chrome-stable  apache2 php5 php5-dev php5-curl php5-imagick php5-mcrypt php5-memcache php5-memcached php5-mongo php5-mysqlnd php5-sqlite php-pear php-apc phpunit mysql-workbench mongodb wine smartgithg mysql-server-5.6 nodejs charles-proxy skype freshplayerplugin
- 
-printf "\n" | sudo pecl install mongo
-printf "\n" | sudo pecl install xdebug
+sudo apt-get --yes --force-yes install iftop \
+iotop \
+terminator \
+google-chrome-stable \
+apache2 \
+php5 \
+php5-dev \
+php5-curl \
+php5-imagick \
+php5-mcrypt \
+php5-memcache \
+php5-memcached \
+php5-mongo \
+php5-mysqlnd \
+php5-sqlite \
+php-pear \
+php-apc \
+mysql-workbench \
+mongodb \
+wine \
+smartgit \
+nodejs \
+charles-proxy \
+skype \
+freshplayerplugin \
+mysql-server-5.5 \
+mysql-client-5.5 \
+filezilla-common \
+openjdk-8-jdk \
+rar \
+unrar \
+php5-xdebug \
+filezilla \
+thunderbird
+
+npm install -g grunt  grunt-cli bower jscs jshint
+
+wget https://getcomposer.org/composer.phar
+mv composer.phar /usr/local/bin/composer
+chmod +x /usr/local/bin/composer
+composer global require "codeception/codeception=2.0.*"
+composer global require "codeception/specify=*"
+composer global require "codeception/verify=*"
+composer global require "hirak/prestissimo=*"
+composer global require "beelab/bowerphp=*"
+composer global require "squizlabs/php_codesniffer=*"
+composer global require "phpmd/phpmd=@stable"
+composer global require "fxp/composer-asset-plugin=*"
+composer global require "phploc/phploc=*"
+composer global require "sebastian/phpcpd=*"
+
+
+wget https://raw.githubusercontent.com/wirwolf/InstallerEnvironment/master/After/files/.bashrc -O /root/.bashrc
+cp /root/.bashrc /home/$HOME_USER/
 #-----------------------------Configurate system--------------------------------------
 sudo cat > /etc/php5/mods-available/xdebug.ini  <<EOF
 zend_extension=xdebug.so
@@ -131,8 +182,8 @@ xdebug.idekey = "phpstorm-xdebug"
 ;xdebug.max_nesting_level = 250
 ;xdebug.overload_var_dump = 1
 ;xdebug.profiler_append = 0
-xdebug.profiler_enable = 1
-;xdebug.profiler_enable_trigger = 1
+;xdebug.profiler_enable = 1
+xdebug.profiler_enable_trigger = 1
 xdebug.profiler_output_dir="/home/$HOME_USER/Web/debug/profiler/"
 xdebug.profiler_output_name = "cachegrind.out.%H%R"
 ;xdebug.remote_autostart = 0
@@ -155,5 +206,3 @@ xdebug.var_display_max_data = 512
 xdebug.var_display_max_depth =10
  
 EOF
- 
-. apache2.sh
