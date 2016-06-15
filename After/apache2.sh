@@ -235,7 +235,9 @@ sudo mkdir /home/$HOME_USER/Web/log
 sudo mkdir /home/$HOME_USER/Web/debug/
 sudo mkdir /home/$HOME_USER/Web/debug/profiler
 sudo mkdir /home/$HOME_USER/Web/debug/trace
- 
+sudo a2enmod rewrite
+sudo chown -R $HOME_USER:$HOME_USER /home/$HOME_USER/Web
+
 sudo service apache2 start
 
 wget https://raw.githubusercontent.com/wirwolf/InstallerEnvironment/master/After/files/apache2/host_updater.php -O /home/$HOME_USER/Web/apache2_host_updater.php
