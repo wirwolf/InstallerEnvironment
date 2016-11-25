@@ -70,3 +70,10 @@ deb-src http://ppa.launchpad.net/ubuntu-wine/ppa/ubuntu xenial main
 
 EOF
 sudo apt update
+
+
+wget -q https://dl.google.com/linux/linux_signing_key.pub -O- | sudo apt-key add -
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 8AC93F7A
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys EEA14886
+wget -q http://download.virtualbox.org/virtualbox/debian/oracle_vbox_2016.asc -O- | sudo apt-key add -
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 883E8688397576B6C509DF495A9A06AEF9CB8DB0
