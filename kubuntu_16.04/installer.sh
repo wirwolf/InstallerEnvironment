@@ -49,10 +49,6 @@ deb http://ppa.launchpad.net/webupd8team/java/ubuntu vivid main
 ## Run this command: wget -q http://download.virtualbox.org/virtualbox/debian/oracle_vbox_2016.asc -O- | sudo apt-key add -
 deb http://download.virtualbox.org/virtualbox/debian xenial contrib
 
-#### Webmin - http://www.webmin.com
-## Run this command: wget http://www.webmin.com/jcameron-key.asc -O- | sudo apt-key add -
-deb http://download.webmin.com/download/repository sarge contrib
-
 #### Wine PPA - https://launchpad.net/~ubuntu-wine/+archive/ppa/
 ## Run this command: sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 883E8688397576B6C509DF495A9A06AEF9CB8DB0
 deb http://ppa.launchpad.net/ubuntu-wine/ppa/ubuntu xenial main
