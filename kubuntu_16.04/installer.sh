@@ -13,18 +13,18 @@ sudo cat > /etc/apt/sources.list <<EOF
 
 
 ###### Ubuntu Main Repos
-deb http://ug.archive.ubuntu.com/ubuntu/ xenial main restricted universe multiverse 
-deb-src http://ug.archive.ubuntu.com/ubuntu/ xenial main restricted universe multiverse 
+deb http://mirror.mirohost.net/ubuntu/ xenial main restricted universe multiverse 
+deb-src http://mirror.mirohost.net/ubuntu/ xenial main restricted universe multiverse 
 
 ###### Ubuntu Update Repos
-deb http://ug.archive.ubuntu.com/ubuntu/ xenial-security main restricted universe multiverse 
-deb http://ug.archive.ubuntu.com/ubuntu/ xenial-updates main restricted universe multiverse 
-deb http://ug.archive.ubuntu.com/ubuntu/ xenial-proposed main restricted universe multiverse 
-deb http://ug.archive.ubuntu.com/ubuntu/ xenial-backports main restricted universe multiverse 
-deb-src http://ug.archive.ubuntu.com/ubuntu/ xenial-security main restricted universe multiverse 
-deb-src http://ug.archive.ubuntu.com/ubuntu/ xenial-updates main restricted universe multiverse 
-deb-src http://ug.archive.ubuntu.com/ubuntu/ xenial-proposed main restricted universe multiverse 
-deb-src http://ug.archive.ubuntu.com/ubuntu/ xenial-backports main restricted universe multiverse 
+deb http://mirror.mirohost.net/ubuntu/ xenial-security main restricted universe multiverse 
+deb http://mirror.mirohost.net/ubuntu/ xenial-updates main restricted universe multiverse 
+deb http://mirror.mirohost.net/ubuntu/ xenial-proposed main restricted universe multiverse 
+deb http://mirror.mirohost.net/ubuntu/ xenial-backports main restricted universe multiverse 
+deb-src http://mirror.mirohost.net/ubuntu/ xenial-security main restricted universe multiverse 
+deb-src http://mirror.mirohost.net/ubuntu/ xenial-updates main restricted universe multiverse 
+deb-src http://mirror.mirohost.net/ubuntu/ xenial-proposed main restricted universe multiverse 
+deb-src http://mirror.mirohost.net/ubuntu/ xenial-backports main restricted universe multiverse 
 
 #------------------------------------------------------------------------------#
 #                           UNOFFICIAL UBUNTU REPOS                            #
@@ -71,5 +71,6 @@ deb-src http://ppa.launchpad.net/webupd8team/java/ubuntu vivid main
 #### Wine PPA (Source) - https://launchpad.net/~ubuntu-wine/+archive/ppa/
 ## Run this command: sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 883E8688397576B6C509DF495A9A06AEF9CB8DB0
 deb-src http://ppa.launchpad.net/ubuntu-wine/ppa/ubuntu xenial main
+
 EOF
 sudo apt update
