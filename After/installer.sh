@@ -75,13 +75,13 @@ curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash -
 
 #------------------------------add java 8-------------------------------------------
  #sudo add-apt-repository ppa:webupd8team/java
- sudo add-apt-repository ppa:openjdk-r/ppa
+printf "\n" | sudo add-apt-repository ppa:openjdk-r/ppa
 
 #------------------------------add thunderbird-------------------------------------------
-sudo add-apt-repository ppa:mozillateam/thunderbird-next 
+printf "\n" | sudo add-apt-repository ppa:mozillateam/thunderbird-next 
 
 #------------------------------add telegram-------------------------------------------
-sudo add-apt-repository ppa:atareao/telegram
+printf "\n" | sudo add-apt-repository ppa:atareao/telegram
  
 #---------------------------add charles repo---------------------------------------
 wget -q -O - http://www.charlesproxy.com/packages/apt/PublicKey | sudo apt-key add -
@@ -97,6 +97,14 @@ printf "\n" | sudo add-apt-repository ppa:eugenesan/ppa
 #------------------------------add php5.6 repo------------------------------------
 printf "\n" | sudo add-apt-repository ppa:ondrej/php
 #-----------------------------------------------------------------------------------
+
+
+#------------------------------ add percona ---------------------------------------
+wget https://repo.percona.com/apt/percona-release_0.1-4.$(lsb_release -sc)_all.deb
+dpkg -i percona-release_0.1-4.$(lsb_release -sc)_all.deb
+rm percona-release_0.1-4.$(lsb_release -sc)_all.deb
+#-----------------------------------------------------------------------------------
+
  
 #flash plagin
 printf "\n" | sudo add-apt-repository ppa:nilarimogard/webupd8
@@ -108,29 +116,34 @@ iotop \
 terminator \
 google-chrome-stable \
 apache2 \
-
+php5.6-cli \
+php5.6-dev \
+php5.6-common \
+php5.6 \
 php5.6-curl \
-php5.6-bcmath \
-php5.6-mongodb \
-php5.6-soap \
+php5.6-gd \
+php5.6-imap \
 php5.6-intl \
-php5.6-mbstring \
-php5.6-redis \
-php5.6-xdebug \
 php5.6-mysql \
-
-#php5.6-imagick \
-#php5.6-mcrypt \
-#php5-memcache \
-#php5-memcached \
-#php5.6-sqlite \
-#php5.6-dom \
-
+php5.6-pgsql \
+php5.6-snmp \
+php5.6-json \
+php5.6-bz2 \
+php5.6-mcrypt \
+php5.6-interbase \
+php5.6-xmlrpc \
+php5.6-gmp \
+php5.6-xsl \
+php5.6-bcmath \
+php5.6-mbstring \
+php5.6-soap \
+php5.6-xml \
+php5.6-zip \
 mysql-workbench \
-mongodb \
 wine \
 smartgit \
 nodejs \
+percona-server-mongodb \
 charles-proxy \
 skype \
 freshplayerplugin \
