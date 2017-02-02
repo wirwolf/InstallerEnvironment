@@ -70,9 +70,8 @@ sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable
  
 #------------------------------add nodejs repo--------------------------------------
 sudo apt-get --yes --force-yes install curl
-curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
+curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash -
 #-----------------------------------------------------------------------------------
-
 
 #------------------------------add java 8-------------------------------------------
  #sudo add-apt-repository ppa:webupd8team/java
@@ -94,6 +93,10 @@ EOF
 #------------------------------add SmartGit repo------------------------------------
 printf "\n" | sudo add-apt-repository ppa:eugenesan/ppa
 #-----------------------------------------------------------------------------------
+
+#------------------------------add php5.6 repo------------------------------------
+add-apt-repository ppa:ondrej/php
+#-----------------------------------------------------------------------------------
  
 #flash plagin
 printf "\n" | sudo add-apt-repository ppa:nilarimogard/webupd8
@@ -105,18 +108,24 @@ iotop \
 terminator \
 google-chrome-stable \
 apache2 \
-php5 \
-php5-dev \
-php5-curl \
-php5-imagick \
-php5-mcrypt \
-php5-memcache \
-php5-memcached \
-php5-mongo \
-php5-mysqlnd \
-php5-sqlite \
-php-pear \
-php-apc \
+
+php5.6-curl \
+php5.6-bcmath \
+php5.6-mongodb \
+php5.6-soap \
+php5.6-intl \
+php5.6-mbstring \
+php5.6-redis \
+php5.6-xdebug \
+php5.6-mysql \
+
+#php5.6-imagick \
+#php5.6-mcrypt \
+#php5-memcache \
+#php5-memcached \
+#php5.6-sqlite \
+#php5.6-dom \
+
 mysql-workbench \
 mongodb \
 wine \
@@ -131,7 +140,6 @@ filezilla-common \
 openjdk-8-jdk \
 rar \
 unrar \
-php5-xdebug \
 filezilla \
 thunderbird
 
@@ -140,20 +148,15 @@ npm install -g grunt  grunt-cli bower jscs jshint
 wget https://getcomposer.org/composer.phar
 mv composer.phar /usr/local/bin/composer
 chmod +x /usr/local/bin/composer
-composer global require "codeception/codeception=2.0.*"
+composer global require "codeception/codeception=2.2.*"
 composer global require "codeception/specify=*"
 composer global require "codeception/verify=*"
 composer global require "hirak/prestissimo=*"
-composer global require "beelab/bowerphp=*"
 composer global require "squizlabs/php_codesniffer=*"
 composer global require "phpmd/phpmd=@stable"
 composer global require "fxp/composer-asset-plugin=*"
 composer global require "phploc/phploc=*"
 composer global require "sebastian/phpcpd=*"
-git clone git://github.com/yiisoft/yii2-coding-standards.git
-cp yii2-coding-standards/Yii2/ /home/$HOME_USER/.composer/vendor/squizlabs/php_codesniffer/CodeSniffer/Standards/
-cp yii2-coding-standards/Yii2/ /home/$HOME_USER/.config/composer/vendor/squizlabs/php_codesniffer/CodeSniffer/Standards/
-rm -rf yii2-coding-standards/
 
 
 
