@@ -95,7 +95,7 @@ printf "\n" | sudo add-apt-repository ppa:eugenesan/ppa
 #-----------------------------------------------------------------------------------
 
 #------------------------------add php5.6 repo------------------------------------
-add-apt-repository ppa:ondrej/php
+printf "\n" | sudo add-apt-repository ppa:ondrej/php
 #-----------------------------------------------------------------------------------
  
 #flash plagin
